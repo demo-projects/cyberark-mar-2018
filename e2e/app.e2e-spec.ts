@@ -9,6 +9,6 @@ describe('cyberark-mar2018 App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to ca!');
+    expect(page.getParagraphText()).toEqual('Welcome to Cyberark Angular Course!');
   });
 });
