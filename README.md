@@ -29,3 +29,31 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Cheatsheet
+
+### Angular CLI
+
+$ npm i -g @angular/cli
+$ ng help
+$ ng new cyberark-mar2018 --style scss --prefix ca --routing --inline-style --inline-template
+$ ng generate module <path/to/component-name> -e
+$ ng generate component <path/to/directive-name> -e
+$ ng generate directive <path/to/module-name> -e
+$ ng build (--prod, --env=prod, --target=production)
+$ ng test, ng e2e, ng lint
+$ npm i -g http-server
+$ npm i -g source-map-explorer
+
+### ES6 / ES7 / Typescript
+
+decorators @
+destructuring ...
+let and const vs. var
+() => vs. function
+
+### Homework
+
+1. Make the event fire only when going out of the field, or when pressing enter
+2. Make it so that not every character invokes changing the property, but after there's a 300ms of "silence"
+3. Make different types of elements with a 'tag' property
