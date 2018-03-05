@@ -58,3 +58,7 @@ let and const vs. var
 1. Make the event fire only when going out of the field, or when pressing enter
 2. Make it so that not every character invokes changing the property, but after there's a 300ms of "silence"
 3. Make different types of elements with a 'tag' property
+
+### TODO:
+
+Send course agenda to participants

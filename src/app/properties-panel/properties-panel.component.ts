@@ -4,6 +4,7 @@ import { ElementProperties } from '../types/element-properties.types';
 @Component({
   selector: 'ca-properties-panel',
   template: `
+  <div class="properties">
     <input
       placeholder="Please enter text..."
       #textInput
@@ -23,8 +24,16 @@ import { ElementProperties } from '../types/element-properties.types';
       #opacityInput
       [value]="properties.opacity"
       (change)="changeProperties.emit({ opacity: opacityInput.value })"/>
+  </div>
   `,
-  styles: []
+  styles: [
+    `:host { border-left: 1px solid grey; padding: 10px}`,
+    `input {width: 350px }`,
+    `.properties {
+      display: flex;
+      flex-direction: column;
+    }`
+  ]
 })
 export class PropertiesPanelComponent implements OnInit {
   @Input() properties: ElementProperties;
