@@ -37,6 +37,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 $ npm i -g @angular/cli
 $ ng help
 $ ng new cyberark-mar2018 --style scss --prefix ca --routing --inline-style --inline-template
+.angular-cli.json
 $ ng generate module <path/to/component-name> -e
 $ ng generate component <path/to/directive-name> -e
 $ ng generate directive <path/to/module-name> -e
