@@ -46,19 +46,77 @@ $ ng test, ng e2e, ng lint
 $ npm i -g http-server
 $ npm i -g source-map-explorer
 
+## Tools
+
+ngrev
+
 ### ES6 / ES7 / Typescript
 
 decorators @
-destructuring ...
+spread operator ...
 let and const vs. var
 () => vs. function
 
-### Homework
+# imports
+
+import { Named } from './my-module'; // export class Named {}
+import { Named as Aliased } from './my-module'; // export class Named {}
+import Default from './my-module'; // export default class Whatever {}
+import Default as Alias from './my-module'; // export default class Whatever {}
+import \* as All from './my-module'; // export default class Whatever {}
+
+### Course (planned) Agenda
+
+## Reading Material
+
+* Webpack
+* NPM
+* Typescript
+
+- Day 1
+
+  * Intro
+  * Component Concepts
+  * Bindings
+  * Component hierarchy, Input and Output
+  * Angular CLI
+  * ngIf and ngFor
+  * module system basics
+  * content projection
+
+- Day 2
+  * Demistify npm & typescript
+  * ngSwitch
+  * Creating a Custom Directive
+  * Change detection & Zones explained
+  * Writing Services
+  * Dependency Injection
+  * Pipes
+  * Routing
+  * Bonus - dynamic content creation, writing structural directives
+
+- Day 3
+  * Http
+  * rxJS basics
+  * lifecycle hooks
+  * Template Forms basic
+  * "2 way binding"
+  * Reactive Forms, Form Builder
+  * Form customization
+  * Custom Validations
+
+- Day 4
+  * State Management using ngRX / Redux
+  * Flux concepts
+  * Designing the state
+  * Writing actions / reducers
+  * Working with immutable data
+  * Selectors
+  * Middlewares / Effects
+
+### Homework - lesson #1
 
 1. Make the event fire only when going out of the field, or when pressing enter
-2. Make it so that not every character invokes changing the property, but after there's a 300ms of "silence"
-3. Make different types of elements with a 'tag' property
+2. Make different types of elements with a 'tag' property
+3. Make it so that not every character invokes changing the property, but after there's a 300ms of "silence"
 
-### TODO:
-
-Send course agenda to participants
