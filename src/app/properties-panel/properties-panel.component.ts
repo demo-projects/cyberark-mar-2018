@@ -5,25 +5,31 @@ import { ElementProperties } from '../types/element-properties.types';
   selector: 'ca-properties-panel',
   template: `
   <div class="properties">
-    <input
-      placeholder="Please enter text..."
-      #textInput
-      [value]="properties.text"
-      (input)="changeProperties.emit({ text: textInput.value })"
-    />
-    <input
-      type="color"
-      #colorInput
-      [value]="properties.color"
-      (change)="changeProperties.emit({ color: colorInput.value })"/>
-    <input
-      type="range"
-      min="0"
-      max="1"
-      step="0.1"
-      #opacityInput
-      [value]="properties.opacity"
-      (change)="changeProperties.emit({ opacity: opacityInput.value })"/>
+    <ca-field label="Text">
+      <input
+        placeholder="Please enter text..."
+        #textInput
+        [value]="properties.text"
+        (input)="changeProperties.emit({ text: textInput.value })"
+      />
+    </ca-field>
+    <ca-field label="Color">
+      <input
+        type="color"
+        #colorInput
+        [value]="properties.color"
+        (change)="changeProperties.emit({ color: colorInput.value })"/>
+    </ca-field>
+    <ca-field label="Opacity">
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.1"
+        #opacityInput
+        [value]="properties.opacity"
+        (change)="changeProperties.emit({ opacity: opacityInput.value })"/>
+    </ca-field>
   </div>
   `,
   styles: [
