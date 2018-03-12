@@ -133,6 +133,7 @@ import \* as All from './my-module'; // export default class Whatever {}
 
 ## Check
 public interface for decorators
+what else can be transferred to HostListener
 
 ## Exercise
 create service (ng g service editor -m app)

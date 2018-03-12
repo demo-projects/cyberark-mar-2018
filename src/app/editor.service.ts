@@ -19,6 +19,9 @@ export class EditorService {
       opacity: 1
     }
   ];
+  setSelectedIndex(i) {
+    this.selectedElementIndex = i;
+  }
   setProperties(updatedProps) {
     this.elements[this.selectedElementIndex] = {
       ...this.elements[this.selectedElementIndex],
