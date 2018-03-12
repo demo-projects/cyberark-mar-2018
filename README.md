@@ -120,3 +120,5 @@ import \* as All from './my-module'; // export default class Whatever {}
 2. Make different types of elements with a 'tag' property
 3. Make it so that not every character invokes changing the property, but after there's a 300ms of "silence"
 
+## Check
+public interface for decorators

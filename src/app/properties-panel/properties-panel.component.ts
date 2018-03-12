@@ -5,12 +5,21 @@ import { ElementProperties } from '../types/element-properties.types';
   selector: 'ca-properties-panel',
   template: `
   <div class="properties">
+    <ca-field label="Tag">
+      <select
+        #tagInput
+        [value]="properties.tag"
+        (change)="changeProperties.emit({ tag: tagInput.value })"
+      >
+        <option *ngFor="let tag of tags | sort" [value]="tag">{{ tag | uppercase }}</option>
+      </select>
+    </ca-field>
     <ca-field label="Text">
       <input
         placeholder="Please enter text..."
         #textInput
         [value]="properties.text"
-        (input)="changeProperties.emit({ text: textInput.value })"
+        (change)="changeProperties.emit({ text: textInput.value })"
       />
     </ca-field>
     <ca-field label="Color">
@@ -44,6 +53,8 @@ import { ElementProperties } from '../types/element-properties.types';
 export class PropertiesPanelComponent implements OnInit {
   @Input() properties: ElementProperties;
   @Output() changeProperties = new EventEmitter<ElementProperties>();
+
+  tags = ['h1', 'h2', 'p', 'div'];
   constructor() {}
 
   ngOnInit() {}

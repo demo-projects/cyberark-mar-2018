@@ -7,16 +7,28 @@ import { ElementProperties } from './types/element-properties.types';
     <!--The content below is only a placeholder and can be replaced.-->
       <div class="container">
         <div class="working-area">
-          <h1
+          <div
             class="element"
             *ngFor="let properties of elements; let i = index"
             [class.element-selected]="selectedElementIndex === i"
             (click)="selectedElementIndex = i"
             [style.color]="properties.color"
-            [style.opacity]="properties.opacity"
-          >
-          {{ properties.text }}
-        </h1>
+            [style.opacity]="properties.opacity">
+          <ng-container [ngSwitch]="properties.tag">
+            <h1 *ngSwitchCase="'h1'">
+              {{ properties.text }}
+            </h1>
+            <h2 *ngSwitchCase="'h2'">
+              {{ properties.text }}
+            </h2>
+            <p *ngSwitchCase="'p'">
+              {{ properties.text }}
+            </p>
+            <div *ngSwitchCase="'div'">
+              {{ properties.text }}
+            </div>
+          </ng-container>
+        </div>
       </div>
       <ca-properties-panel
         *ngIf="selectedElementIndex !== null"
@@ -36,11 +48,13 @@ export class AppComponent {
   selectedElementIndex = null;
   elements: ElementProperties[] = [
     {
+      tag: 'h1',
       text: 'Cyberark Angular Course',
       color: '#123ABC',
       opacity: 1
     },
     {
+      tag: 'h2',
       text: 'March 2018',
       color: '#456DEF',
       opacity: 1
