@@ -134,3 +134,10 @@ import \* as All from './my-module'; // export default class Whatever {}
 ## Check
 public interface for decorators
 
+## Exercise
+create service (ng g service editor -m app)
+inject service in app component
+moved state from app component to service
+ng g c working-area (injects service)
+ng g c elements-navigator (injects service)
+moved TAGS to types/element-properties.types

@@ -4,3 +4,5 @@ export interface ElementProperties {
   color?: string;
   opacity?: number;
 }
+
+export const TAGS = ['h1', 'h2', 'p', 'div'];

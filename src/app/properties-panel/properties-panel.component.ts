@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
-import { ElementProperties } from '../types/element-properties.types';
+import { ElementProperties, TAGS } from '../types/element-properties.types';
 
 @Component({
   selector: 'ca-properties-panel',
@@ -55,7 +55,7 @@ export class PropertiesPanelComponent implements OnInit {
   @Input() properties: ElementProperties;
   @Output() changeProperties = new EventEmitter<ElementProperties>();
   counter = 0;
-  tags = ['h1', 'h2', 'p', 'div'];
+  tags = TAGS;
   constructor() {
   }
   // constructor(ngZone: NgZone, changeDetectorRef: ChangeDetectorRef) {
