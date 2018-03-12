@@ -11,7 +11,7 @@ import { ElementProperties } from '../types/element-properties.types';
         [value]="properties.tag"
         (change)="changeProperties.emit({ tag: tagInput.value })"
       >
-        <option *ngFor="let tag of tags | sort" [value]="tag">{{ tag | uppercase }}</option>
+        <option *ngFor="let tag of tags | sort:'DESC'" [value]="tag">{{ tag | uppercase }}</option>
       </select>
     </ca-field>
     <ca-field label="Text">
