@@ -65,6 +65,17 @@ import Default from './my-module'; // export default class Whatever {}
 import Default as Alias from './my-module'; // export default class Whatever {}
 import \* as All from './my-module'; // export default class Whatever {}
 
+## TSC + NPM Playground:
+* https://github.com/demo-projects/tsc-playground
+* npm i -g typescript
+* tsc index.ts
+* tsc --init
+* tsconfig.json - rootDir, outDir
+* @Component - decorator
+* npm i -g @angular/compiler
+* npm i -g @angular/compiler-cli
+* ngc
+
 ### Course (planned) Agenda
 
 ## Reading Material
@@ -122,3 +133,4 @@ import \* as All from './my-module'; // export default class Whatever {}
 
 ## Check
 public interface for decorators
+

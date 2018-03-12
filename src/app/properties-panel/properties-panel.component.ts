@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { ElementProperties } from '../types/element-properties.types';
 
 @Component({
   selector: 'ca-properties-panel',
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <div class="properties">
     <ca-field label="Tag">
@@ -19,7 +20,7 @@ import { ElementProperties } from '../types/element-properties.types';
         placeholder="Please enter text..."
         #textInput
         [value]="properties.text"
-        (change)="changeProperties.emit({ text: textInput.value })"
+        (input)="changeProperties.emit({ text: textInput.value })"
       />
     </ca-field>
     <ca-field label="Color">
@@ -53,9 +54,27 @@ import { ElementProperties } from '../types/element-properties.types';
 export class PropertiesPanelComponent implements OnInit {
   @Input() properties: ElementProperties;
   @Output() changeProperties = new EventEmitter<ElementProperties>();
-
+  counter = 0;
   tags = ['h1', 'h2', 'p', 'div'];
-  constructor() {}
+  constructor() {
+  }
+  // constructor(ngZone: NgZone, changeDetectorRef: ChangeDetectorRef) {
+  //   ngZone.runOutsideAngular(() => {
+  //     setInterval(() => {
+  //       this.counter++;
+  //       if (this.counter % 10 === 0) {
+  //         changeDetectorRef.detectChanges();
+  //       }
+  //     }, 100);
+  //   });
+  // }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+
+  // currentTime() {
+  //   console.count('change detection');
+  //   return 'moshe';
+  // }
 }
