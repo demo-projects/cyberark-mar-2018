@@ -30,7 +30,6 @@ import { ElementProperties } from './types/element-properties.types';
           </ng-container>
         </div>
       </div>
-      <input #inputTag [value]="elements[selectedElementIndex].text" (input)="setProperties({ text: inputTag.value })"/>
       <ca-properties-panel
         *ngIf="selectedElementIndex !== null"
         [properties]="elements[selectedElementIndex]"
@@ -46,7 +45,7 @@ import { ElementProperties } from './types/element-properties.types';
   ]
 })
 export class AppComponent {
-  selectedElementIndex = 0;
+  selectedElementIndex = null;
   elements: ElementProperties[] = [
     {
       tag: 'h1',
