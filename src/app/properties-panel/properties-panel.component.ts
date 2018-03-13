@@ -6,6 +6,8 @@ import { ElementProperties, TAGS } from '../types/element-properties.types';
   // changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <div class="properties">
+  {{ time | timeAgo }}
+
     <ca-field label="Tag">
       <select
         #tagInput
@@ -56,6 +58,7 @@ export class PropertiesPanelComponent implements OnInit {
   @Output() changeProperties = new EventEmitter<ElementProperties>();
   counter = 0;
   tags = TAGS;
+  time = new Date();
   constructor() {
   }
   // constructor(ngZone: NgZone, changeDetectorRef: ChangeDetectorRef) {
