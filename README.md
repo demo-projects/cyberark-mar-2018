@@ -47,8 +47,9 @@ $ npm i -g http-server
 $ npm i -g source-map-explorer
 
 ## Tools
-
+augury
 ngrev
+codelyzer (comes with a new Angular project)
 
 ### ES6 / ES7 / Typescript
 
@@ -76,7 +77,7 @@ import \* as All from './my-module'; // export default class Whatever {}
 * npm i -g @angular/compiler-cli
 * ngc
 
-### Course (planned) Agenda
+# Course (planned) Agenda
 
 ## Reading Material
 
@@ -131,14 +132,16 @@ import \* as All from './my-module'; // export default class Whatever {}
 2. Make different types of elements with a 'tag' property
 3. Make it so that not every character invokes changing the property, but after there's a 300ms of "silence"
 
+### Homework - lesson #2
+1.
+Write a directive called 'scrollDetect' that adds the class 'scrolled' to an element if the window is scrolled down more than 10px, and removes it if the window is scrolled less than 50px.
+1.1 allow the user to specify the scroll threshold (50px as default)
+1.2. allow the user to also specify the name of the class (scrolled) is default
+* This exercise requires research. Open HINTS.md file if you need help.
+
+2. Write a pipe called 'timeAgo' that takes a date object and outputs a string in the format 'X hours ago', 'X minutes ago' (if it's less than an hour), 'X seconds ago' (if it's less than a minute).
+2.1 Make it update automatically as time goes by
+
 ## Check
 public interface for decorators
 what else can be transferred to HostListener
-
-## Exercise
-create service (ng g service editor -m app)
-inject service in app component
-moved state from app component to service
-ng g c working-area (injects service)
-ng g c elements-navigator (injects service)
-moved TAGS to types/element-properties.types
