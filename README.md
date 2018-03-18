@@ -77,6 +77,9 @@ import \* as All from './my-module'; // export default class Whatever {}
 * npm i -g @angular/compiler-cli
 * ngc
 
+## Router
+Read about history API
+
 # Course (planned) Agenda
 
 ## Reading Material

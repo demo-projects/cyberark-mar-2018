@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, NgZone, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ElementProperties, TAGS } from '../types/element-properties.types';
 
 @Component({
@@ -6,7 +6,7 @@ import { ElementProperties, TAGS } from '../types/element-properties.types';
   // changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <div class="properties">
-    {{ time | timeAgo }}
+    <!-- {{ time | timeAgo }} -->
 
     <ca-field label="Tag">
       <select
@@ -53,16 +53,27 @@ import { ElementProperties, TAGS } from '../types/element-properties.types';
     }`
   ]
 })
-export class PropertiesPanelComponent implements OnInit {
+export class PropertiesPanelComponent implements OnInit {//, OnChanges {
   @Input() properties: ElementProperties;
   @Output() changeProperties = new EventEmitter<ElementProperties>();
   counter = 0;
   tags = TAGS;
-  time = new Date();
 
+  // time = new Date();
   // time = new Date('Sun Mar 18 2018 8:36:03 GMT+0200 (IST)');
   constructor() {
   }
+
+  ngOnInit() {
+
+  }
+
+  // ngOnChanges(changes: SimpleChanges) {
+  //   if (changes.properties) {
+
+  //   }
+  // }
+
   // constructor(ngZone: NgZone, changeDetectorRef: ChangeDetectorRef) {
   //   ngZone.runOutsideAngular(() => {
   //     setInterval(() => {
@@ -74,9 +85,6 @@ export class PropertiesPanelComponent implements OnInit {
   //   });
   // }
 
-  ngOnInit() {
-
-  }
 
   // currentTime() {
   //   console.count('change detection');

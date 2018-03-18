@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { ElementProperties } from './types/element-properties.types';
 
 @Injectable()
@@ -19,6 +20,9 @@ export class EditorService {
       opacity: 1
     }
   ];
+  constructor(private httpClient: HttpClient) {
+
+  }
   setSelectedIndex(i) {
     this.selectedElementIndex = i;
   }
@@ -41,4 +45,9 @@ export class EditorService {
     this.selectedElementIndex = this.elements.length - 1;
   }
 
+  save() {
+    this.httpClient.post('http://localhost:3000/projects', {
+      elements: this.elements
+    }).subscribe((data) => console.log('after', data));
+  }
 }

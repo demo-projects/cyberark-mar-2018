@@ -1,27 +1,35 @@
 import { Component } from '@angular/core';
-import { ElementProperties } from './types/element-properties.types';
-import { EditorService } from './editor.service';
 
 @Component({
   selector: 'ca-root',
   template: `
     <!--The content below is only a placeholder and can be replaced.-->
     <!--<div class="container" caScrollDetect="100" caScrollDetectClassName="my-scroll-class">-->
-    <div class="container" caScrollDetect="100" caScrollDetectClassName="my-scroll-class">
-      <ca-elements-navigator></ca-elements-navigator>
-      <ca-working-area></ca-working-area>
-      <ca-properties-panel
-        *ngIf="editor.selectedElementIndex !== null"
-        [properties]="editor.elements[editor.selectedElementIndex]"
-        (changeProperties)="editor.setProperties($event)"
-      ></ca-properties-panel>
-    </div>
+    <header>
+      <a routerLink="/login" routerLinkActive="link-active">Login</a>
+      <a routerLink="/editor" routerLinkActive="link-active">Editor</a>
+    </header>
+    <router-outlet></router-outlet>
   `,
   styles: [
-    `.container { display: flex; height: 1000px }`
+    `.link-active {
+      font-weight: bold;
+    }`,
+    `header {
+      height: 40px;
+      display: flex;
+      padding: 10px;
+      border-bottom: 1px solid grey;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: start;
+      background: #DDD;
+    }`,
+    `a{margin-right: 20px}`
   ]
 })
 export class AppComponent {
-  constructor(public editor: EditorService) {
+  constructor() {
   }
 }

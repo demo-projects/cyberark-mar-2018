@@ -4,6 +4,7 @@ import { EditorService } from '../editor.service';
 @Component({
   selector: 'ca-working-area',
   template: `
+    <ca-editor-actions></ca-editor-actions>
     <div class="working-area" (caClickAndStop)="selectElement(null)">
       <div
         class="element"
@@ -29,7 +30,7 @@ import { EditorService } from '../editor.service';
     </div>
 `,
   styles: [
-    `:host { flex-grow: 1; padding: 5px }`,
+    `:host { flex-grow: 1; padding: 5px; position: relative }`,
     `.working-area { height: 100% }`,
     `.element { cursor: pointer }`,
     `.element-selected { box-shadow: inset 0 0 1px 1px rgba(0,0,0,0.5) }`
