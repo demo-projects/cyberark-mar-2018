@@ -147,6 +147,7 @@ Write a directive called 'scrollDetect' that adds the class 'scrolled' to an ele
 
 ### Homework - lesson #3
 Implement update when we are in /editor/:id
+Implement custom validator
 
 ## Check
 public interface for decorators

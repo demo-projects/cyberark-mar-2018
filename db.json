@@ -259,6 +259,23 @@
     {
       "elements": [],
       "id": 14
+    },
+    {
+      "elements": [
+        {
+          "tag": "h1",
+          "text": "New Element",
+          "color": "#000000",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "text": "New Element",
+          "color": "#000000",
+          "opacity": 1
+        }
+      ],
+      "id": 15
     }
   ]
 }

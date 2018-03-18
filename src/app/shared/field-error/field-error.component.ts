@@ -3,7 +3,9 @@ import { FormControl } from '@angular/forms';
 
 const ERRORS = {
   required: () => 'This field is required',
-  minlength: ({ requiredLength }) => `Must be at least ${requiredLength} characters`
+  minlength: ({ requiredLength }) => `Must be at least ${requiredLength} characters`,
+  email: () => 'Not a valid email',
+  password: (errorMsg) => errorMsg
 };
 
 @Component({
@@ -28,6 +30,7 @@ export class FieldErrorComponent {
   constructor() { }
 
   getErrorString() {
+    console.log(this.control.errors);
     if (!this.control.errors) {
       return ;
     }

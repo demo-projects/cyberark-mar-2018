@@ -1,29 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { passwordValidator } from '../../shared/validators/password.validator';
 
 @Component({
   selector: 'ca-login',
   template: `
-    <form (submit)="login(loginForm)" #loginForm="ngForm" [class.is-submitted]="isSubmitted">
+    <form
+      (submit)="login(loginForm)"
+      [formGroup]="loginForm"
+      [class.is-submitted]="isSubmitted">
       <ca-field label="email">
         <input
-          required
+          formControlName="email"
           type="email"
           name="email"
-          [(ngModel)]="email"
           autofocus/>
       </ca-field>
       <ca-field-error *ngIf="isSubmitted" [control]="loginForm.controls['email']"></ca-field-error>
       <ca-field label="password">
         <input
-          required
-          minlength="8"
+          formControlName="password"
           type="password"
-          [(ngModel)]="password"
           name="password"/>
       </ca-field>
       <ca-field-error *ngIf="isSubmitted" [control]="loginForm.controls['password']"></ca-field-error>
       <button>Go</button>
+      <button type="button" (click)="reset()">Reset</button>
     </form>
   `,
   styles: [
@@ -74,17 +76,35 @@ import { NgForm } from '@angular/forms';
 
   ]
 })
-export class LoginComponent {
-  email: string;
-  password: string;
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
   isSubmitted = false;
-  constructor() { }
+  constructor(fb: FormBuilder) {
+    this.loginForm = fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8), passwordValidator]]
+    });
+    // this.loginForm = new FormGroup({
+    //   email: new FormControl('', [Validators.required, Validators.email]),
+    //   password: new FormControl('', [Validators.required, Validators.minLength(8)])
+    // });
+  }
+  ngOnInit() {
+    this.loginForm.valueChanges.subscribe((value) => console.log('value', value));
+    this.loginForm.statusChanges.subscribe((status) => console.log('status', status));
+  }
+  reset() {
+    this.loginForm.setValue({
+      email: '',
+      password: ''
+    });
+    this.isSubmitted = false;
+  }
 
-  login(loginForm: NgForm) {
+  login() {
     this.isSubmitted = true;
-    console.log(loginForm);
-    if (loginForm.valid) {
-      alert(`login ${this.email} ${this.password}`);
+    if (this.loginForm.valid) {
+      console.log(this.loginForm.value);
     }
   }
 
