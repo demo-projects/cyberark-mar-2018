@@ -12,11 +12,14 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
   interval;
   constructor() {
     this.interval = setInterval(() => {
+
     }, 1000);
   }
+
   ngOnDestroy() {
     clearInterval(this.interval);
   }
+
   getDiffStr(diff) {
     let type, amount;
 

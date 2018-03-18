@@ -6,7 +6,7 @@ import { ElementProperties, TAGS } from '../types/element-properties.types';
   // changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
   <div class="properties">
-  {{ time | timeAgo }}
+    {{ time | timeAgo }}
 
     <ca-field label="Tag">
       <select
@@ -59,6 +59,8 @@ export class PropertiesPanelComponent implements OnInit {
   counter = 0;
   tags = TAGS;
   time = new Date();
+
+  // time = new Date('Sun Mar 18 2018 8:36:03 GMT+0200 (IST)');
   constructor() {
   }
   // constructor(ngZone: NgZone, changeDetectorRef: ChangeDetectorRef) {

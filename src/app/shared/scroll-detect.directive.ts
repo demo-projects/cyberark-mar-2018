@@ -4,20 +4,28 @@ import { Directive, HostListener, HostBinding, ElementRef, Renderer, Input } fro
   selector: '[caScrollDetect]'
 })
 export class ScrollDetectDirective {
-  // @HostBinding('class.scrolled') isScrolled = false;
-  @Input() caScrollDetect;
-  @Input() caScrollDetectClassName = '';
-  constructor(private elementRef: ElementRef, private renderer: Renderer) { }
+  @Input() caScrollDetect: string;
+  @Input() caScrollDetectClassName: string;
+
+  constructor(private renderer: Renderer, private elementRef: ElementRef) {
+
+  }
 
   @HostListener('window:scroll')
   handleScroll() {
-    const className = this.caScrollDetectClassName || 'scrolled';
     const threshold = parseInt(this.caScrollDetect || '50', 10);
-
-    this.renderer.setElementClass(
-      this.elementRef.nativeElement,
-      className,
-      window.scrollY > threshold
-    );
+    if (window.scrollY > threshold) {
+      this.renderer.setElementClass(
+        this.elementRef.nativeElement,
+        this.caScrollDetectClassName,
+        true
+      );
+    } else {
+      this.renderer.setElementClass(
+        this.elementRef.nativeElement,
+        this.caScrollDetectClassName,
+        false
+      );
+    }
   }
 }

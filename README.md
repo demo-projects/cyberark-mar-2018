@@ -145,3 +145,6 @@ Write a directive called 'scrollDetect' that adds the class 'scrolled' to an ele
 ## Check
 public interface for decorators
 what else can be transferred to HostListener
+
+## TODO
+next assignment - use ngZone to make the scroll detect more performant
