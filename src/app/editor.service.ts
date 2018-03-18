@@ -1,24 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ElementProperties } from './types/element-properties.types';
+import { Project } from './types/element-properties.types';
 
 @Injectable()
 export class EditorService {
 
   selectedElementIndex = null;
   elements: ElementProperties[] = [
-    {
-      tag: 'h1',
-      text: 'Cyberark Angular Course',
-      color: '#123ABC',
-      opacity: 1
-    },
-    {
-      tag: 'h2',
-      text: 'March 2018',
-      color: '#456DEF',
-      opacity: 1
-    }
   ];
   constructor(private httpClient: HttpClient) {
 
@@ -45,9 +34,27 @@ export class EditorService {
     this.selectedElementIndex = this.elements.length - 1;
   }
 
-  save() {
-    this.httpClient.post('http://localhost:3000/projects', {
+  create() {
+    return this.httpClient.post<Project>('http://localhost:3000/projects', {
       elements: this.elements
-    }).subscribe((data) => console.log('after', data));
+    });
+  }
+
+  update(id) {
+    return this.httpClient.put<Project>(`http://localhost:3000/projects/${id}`, {
+      elements: this.elements
+    });
+  }
+
+  reset() {
+    this.elements = [];
+    this.selectedElementIndex = null;
+  }
+
+  loadProject(id) {
+    return this.httpClient.get<Project>(`http://localhost:3000/projects/${id}`)
+      .subscribe((data) => {
+        this.elements = data.elements;
+      });
   }
 }

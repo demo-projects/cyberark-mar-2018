@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EditorService } from '../editor.service';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'ca-editor-actions',
   template: `
     <div class="actions">
+      <span>{{ projectId$ | async }}</span>
       <button (click)="save()">Save</button>
     </div>
   `,
@@ -26,14 +29,24 @@ import { EditorService } from '../editor.service';
   ]
 })
 export class EditorActionsComponent implements OnInit {
-
-  constructor(public editor: EditorService) { }
+  projectId$;
+  constructor(public editor: EditorService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.projectId$ = this.activatedRoute.params.map((params) => params.id);
+  }
 
   ngOnInit() {
   }
 
   save() {
-    this.editor.save();
+    if (this.activatedRoute.snapshot.params.id) {
+      this.editor.update(this.activatedRoute.snapshot.params.id)
+        .subscribe(console.log);
+    } else {
+      this.editor.create()
+      .subscribe((data) => {
+        this.router.navigate(['/editor', data.id]);
+      });
+    }
   }
 
 }

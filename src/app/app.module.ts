@@ -13,9 +13,10 @@ import { ElementsNavigatorComponent } from './elements-navigator/elements-naviga
 import { EditorComponent } from './editor/editor.component';
 import { AuthModule } from './auth/auth.module';
 import { EditorActionsComponent } from './editor-actions/editor-actions.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, PropertiesPanelComponent, WorkingAreaComponent, ElementsNavigatorComponent, EditorComponent, EditorActionsComponent],
+  declarations: [AppComponent, PropertiesPanelComponent, WorkingAreaComponent, ElementsNavigatorComponent, EditorComponent, EditorActionsComponent, PageNotFoundComponent],
   imports: [
     AuthModule,
     BrowserModule,

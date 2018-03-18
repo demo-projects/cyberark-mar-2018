@@ -145,6 +145,9 @@ Write a directive called 'scrollDetect' that adds the class 'scrolled' to an ele
 2. Write a pipe called 'timeAgo' that takes a date object and outputs a string in the format 'X hours ago', 'X minutes ago' (if it's less than an hour), 'X seconds ago' (if it's less than a minute).
 2.1 Make it update automatically as time goes by
 
+### Homework - lesson #3
+Implement update when we are in /editor/:id
+
 ## Check
 public interface for decorators
 what else can be transferred to HostListener
