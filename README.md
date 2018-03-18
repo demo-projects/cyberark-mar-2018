@@ -154,3 +154,4 @@ what else can be transferred to HostListener
 
 ## TODO
 next assignment - use ngZone to make the scroll detect more performant
+put styles in external CSS
