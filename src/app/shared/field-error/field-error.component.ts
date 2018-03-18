@@ -5,7 +5,10 @@ const ERRORS = {
   required: () => 'This field is required',
   minlength: ({ requiredLength }) => `Must be at least ${requiredLength} characters`,
   email: () => 'Not a valid email',
-  password: (errorMsg) => errorMsg
+  passwordDigits: () => 'Password must contain digits',
+  passwordLowercase: () => 'Password must contain lowercase letters',
+  passwordUppercase: () => 'Password must contain uppercase letters',
+  passwordSpecialChars: () => 'Password must contain special characters'
 };
 
 @Component({

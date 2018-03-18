@@ -146,8 +146,12 @@ Write a directive called 'scrollDetect' that adds the class 'scrolled' to an ele
 2.1 Make it update automatically as time goes by
 
 ### Homework - lesson #3
-Implement update when we are in /editor/:id
-Implement custom validator
+1. Implement update when we are in /editor/:id
+2. Implement custom validator
+3. Add a project selector to the application header:
+* Fetch all projects from the server
+* Display select box, the options are project IDs
+* When selecting a projectId - navigate to that project (editor/:id)
 
 ## Check
 public interface for decorators
