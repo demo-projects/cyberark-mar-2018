@@ -31,22 +31,18 @@ import 'rxjs/add/operator/map';
 export class EditorActionsComponent implements OnInit {
   projectId$;
   constructor(public editor: EditorService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.projectId$ = this.activatedRoute.params.map((params) => params.id);
+    this.projectId$ = this.activatedRoute.params.map(params => params.id);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   save() {
     if (this.activatedRoute.snapshot.params.id) {
-      this.editor.update(this.activatedRoute.snapshot.params.id)
-        .subscribe(console.log);
+      this.editor.update(this.activatedRoute.snapshot.params.id).subscribe(console.log);
     } else {
-      this.editor.create()
-      .subscribe((data) => {
+      this.editor.create().subscribe(data => {
         this.router.navigate(['/editor', data.id]);
       });
     }
   }
-
 }

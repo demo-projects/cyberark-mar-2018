@@ -57,4 +57,8 @@ export class EditorService {
         this.elements = data.elements;
       });
   }
+  getAllProjects() {
+    return this.httpClient.get<Project[]>('http://localhost:3000/projects');
+  }
+
 }

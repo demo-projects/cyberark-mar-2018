@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { EditorService } from './editor.service';
 
 @Component({
   selector: 'ca-root',
@@ -8,6 +11,14 @@ import { Component } from '@angular/core';
     <header>
       <a routerLink="/login" routerLinkActive="link-active">Login</a>
       <a routerLink="/editor" routerLinkActive="link-active">Editor</a>
+      go to project&nbsp;
+      <select #projectIdInput (change)="gotoProject(projectIdInput.value)">
+        <option></option>
+        <option *ngFor="let projectId of (projectIds$ | async)" [value]="projectId">
+          {{ projectId }}
+        </option>
+      </select>
+
     </header>
     <router-outlet></router-outlet>
   `,
@@ -29,7 +40,15 @@ import { Component } from '@angular/core';
     `a{margin-right: 20px}`
   ]
 })
-export class AppComponent {
-  constructor() {
+export class AppComponent implements OnInit {
+  projectIds$: Observable<number[]>;
+  constructor(public editor: EditorService, private router: Router) {}
+
+  ngOnInit() {
+    this.projectIds$ = this.editor.getAllProjects().map(projects => projects.map(({ id }) => id));
+  }
+
+  gotoProject(projectId) {
+    this.router.navigate(['/editor', projectId]);
   }
 }

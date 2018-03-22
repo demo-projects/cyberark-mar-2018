@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 import { ElementProperties } from '../types/element-properties.types';
 import { EditorService } from '../editor.service';
 
@@ -20,19 +21,22 @@ import { EditorService } from '../editor.service';
     `.container { display: flex; height: 1000px }`
   ]
 })
-export class EditorComponent implements OnInit {
-
+export class EditorComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
   constructor(public editor: EditorService, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params) => {
+    this.subscription = this.activatedRoute.params.subscribe((params) => {
       if (params.id) {
         this.editor.loadProject(params.id);
       } else {
         this.editor.reset();
       }
     })
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
