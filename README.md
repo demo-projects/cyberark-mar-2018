@@ -160,10 +160,12 @@ Write a directive called 'scrollDetect' that adds the class 'scrolled' to an ele
 
 ## Read more about
 
-* Webpack
-* NPM
-* Typescript
+* Angular animations
+* Angular universal
 * RxJS
+* Webpack
+* npm
+* Typescript
 
 Useful links:
 [https://docs.google.com/document/d/1kWWIf1JuPxMRJAKdic_5KgtZLsv25_VCtNu24wDqxq0/edit#](https://docs.google.com/document/d/1kWWIf1JuPxMRJAKdic_5KgtZLsv25_VCtNu24wDqxq0/edit#)

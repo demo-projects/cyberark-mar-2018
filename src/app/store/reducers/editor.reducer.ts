@@ -2,7 +2,8 @@ import { set, update, flow } from 'lodash/fp';
 import {
   SET_SELECTED_INDEX,
   UPDATE_PROPERTIES,
-  ADD_ELEMENT
+  ADD_ELEMENT,
+  RESET
 } from '../actions/editor.actions';
 
 const initialState = {
@@ -29,6 +30,8 @@ export const editorReducer = (state = initialState, action) => {
         elements: [...state.elements, action.payload],
         selectedIndex: state.elements.length
       };
+    case RESET:
+      return initialState;
   }
   return state;
 };

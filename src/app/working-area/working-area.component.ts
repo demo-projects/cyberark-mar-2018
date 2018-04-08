@@ -1,5 +1,9 @@
+// working-area.component.ts
 import { Component, OnInit } from '@angular/core';
-import { EditorService } from '../editor.service';
+import { Observable } from 'rxjs/Observable';
+import { ElementProperties } from '../types/element-properties.types';
+import { setSelectedIndex } from '../store/actions/editor.actions';
+import { NgRedux, select } from '@angular-redux/store';
 
 @Component({
   selector: 'ca-working-area',
@@ -8,8 +12,8 @@ import { EditorService } from '../editor.service';
     <div class="working-area" (caClickAndStop)="selectElement(null)">
       <div
         class="element"
-        *ngFor="let properties of editor.elements; let i = index"
-        [class.element-selected]="editor.selectedElementIndex === i"
+        *ngFor="let properties of (elements$ | async); let i = index"
+        [class.element-selected]="(selectedElementIndex$ | async) === i"
         (caClickAndStop)="selectElement(i)"
         [style.color]="properties.color"
         [style.opacity]="properties.opacity">
@@ -37,15 +41,16 @@ import { EditorService } from '../editor.service';
   ]
 })
 export class WorkingAreaComponent implements OnInit {
+  @select(['editor', 'elements'])
+  elements$: Observable<ElementProperties[]>;
 
-  constructor(public editor: EditorService) {
-  }
+  @select(['editor', 'selectedIndex'])
+  selectedElementIndex$: Observable<number>;
+  constructor(public store: NgRedux<any>) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   selectElement(i) {
-    this.editor.setSelectedIndex(i);
+    this.store.dispatch(setSelectedIndex(i));
   }
-
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ElementProperties } from '../types/element-properties.types';
 import { EditorService } from '../editor.service';
+import { NgRedux, select } from '@angular-redux/store';
+import { updateProperties, reset } from '../store/actions/editor.actions';
 
 @Component({
   selector: 'ca-editor',
@@ -11,32 +14,40 @@ import { EditorService } from '../editor.service';
       <ca-elements-navigator></ca-elements-navigator>
       <ca-working-area></ca-working-area>
       <ca-properties-panel
-        *ngIf="editor.selectedElementIndex !== null"
-        [properties]="editor.elements[editor.selectedElementIndex]"
-        (changeProperties)="editor.setProperties($event)"
+        *ngIf="selectedElement$ | async"
+        [properties]="selectedElement$ | async"
+        (changeProperties)="setProperties($event)"
       ></ca-properties-panel>
     </div>
   `,
-  styles: [
-    `.container { display: flex; height: 1000px }`
-  ]
+  styles: [`.container { display: flex; height: 1000px }`]
 })
 export class EditorComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  constructor(public editor: EditorService, private activatedRoute: ActivatedRoute) {
-  }
+  @select(({ editor }) => {
+    return editor.elements[editor.selectedIndex];
+  })
+  selectedElement$: Observable<ElementProperties>;
+
+  constructor(
+    public editor: EditorService,
+    private activatedRoute: ActivatedRoute,
+    public store: NgRedux<any>
+  ) {}
 
   ngOnInit() {
-    this.subscription = this.activatedRoute.params.subscribe((params) => {
+    this.subscription = this.activatedRoute.params.subscribe(params => {
       if (params.id) {
         this.editor.loadProject(params.id);
       } else {
-        this.editor.reset();
+        this.store.dispatch(reset());
       }
-    })
+    });
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
+  setProperties(newProps) {
+    this.store.dispatch(updateProperties(newProps));
+  }
 }
