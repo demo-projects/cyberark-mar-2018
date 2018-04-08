@@ -1,4 +1,5 @@
 import { set, update, flow } from 'lodash/fp';
+import { ElementProperties } from '../../types/element-properties.types';
 import {
   SET_SELECTED_INDEX,
   UPDATE_PROPERTIES,
@@ -6,15 +7,20 @@ import {
   RESET
 } from '../actions/editor.actions';
 
+export interface EditorState {
+  elements: ElementProperties[];
+  selectedIndex: number;
+}
+
 const initialState = {
   elements: [
-    { tag: 'h1', text: 'element1', opacity: 1 },
-    { tag: 'h2', text: 'element2', opacity: 1 }
+    { tag: 'h1', text: 'Welcome', opacity: 1 },
+    { tag: 'h2', text: 'Cyberark Course 2018', opacity: 1 }
   ],
   selectedIndex: null
 };
 
-export const editorReducer = (state = initialState, action) => {
+export const editorReducer = (state: EditorState = initialState, action) => {
   switch (action.type) {
     case SET_SELECTED_INDEX:
       return set('selectedIndex', action.payload, state);

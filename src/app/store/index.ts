@@ -1,11 +1,16 @@
 import { combineReducers } from 'redux';
-import { authReducer } from './reducers/auth.reducer';
-import { editorReducer } from './reducers/editor.reducer';
+import { authReducer, AuthState } from './reducers/auth.reducer';
+import { editorReducer, EditorState } from './reducers/editor.reducer';
 import {
   setSelectedIndex,
   updateProperties,
   addElement
 } from './actions/editor.actions';
+
+export interface AppState {
+  editor: EditorState;
+  auth: AuthState;
+}
 
 export const reducer = combineReducers({
   editor: editorReducer,

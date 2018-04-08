@@ -6,6 +6,7 @@ import { ElementProperties } from '../types/element-properties.types';
 import { EditorService } from '../editor.service';
 import { NgRedux, select } from '@angular-redux/store';
 import { updateProperties, reset } from '../store/actions/editor.actions';
+import { AppState } from '../store';
 
 @Component({
   selector: 'ca-editor',
@@ -24,7 +25,7 @@ import { updateProperties, reset } from '../store/actions/editor.actions';
 })
 export class EditorComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  @select(({ editor }) => {
+  @select(({ editor }: AppState) => {
     return editor.elements[editor.selectedIndex];
   })
   selectedElement$: Observable<ElementProperties>;
