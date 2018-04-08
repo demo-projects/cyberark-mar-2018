@@ -1,21 +1,27 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { authReducer } from './reducers/auth.reducer';
+import { editorReducer } from './reducers/editor.reducer';
+import {
+  setSelectedIndex,
+  updateProperties,
+  addElement
+} from './actions/editor.actions';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + action.payload;
-    case 'DECREMENT':
-      return state - action.payload;
-  }
-  return state;
-};
+const reducer = combineReducers({
+  editor: editorReducer,
+  auth: authReducer
+});
 
-const store = createStore(reducer, 1);
+const store = createStore(
+  reducer,
+  undefined,
+  window['__REDUX_DEVTOOLS_EXTENSION__'] &&
+    window['__REDUX_DEVTOOLS_EXTENSION__']()
+);
 console.log(store.getState());
 store.subscribe(() => {
   console.log(store.getState());
 });
-const increment = (value = 1) => ({ type: 'INCREMENT', payload: value });
-const decrement = (value = 1) => ({ type: 'DECREMENT', payload: value });
-store.dispatch(increment(10));
-store.dispatch(decrement());
+store.dispatch(setSelectedIndex(1));
+store.dispatch(updateProperties({ text: 'new element' }));
+store.dispatch(addElement('h3'));
