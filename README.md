@@ -6,33 +6,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 $ ng new  cyberark-mar2018  --style scss --prefix ca --routing --inline-style --inline-template
 ```
 
-## Development server
+## run
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`ng serve`  
+`npm run server`  
+Navigate to `http://localhost:4200/`
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+# Useful stuff
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Cheatsheet
-
-### Angular CLI
+## Angular CLI
 
 $ npm i -g @angular/cli
 $ ng help
@@ -47,18 +33,20 @@ $ npm i -g http-server
 $ npm i -g source-map-explorer
 
 ## Tools
+
 augury
 ngrev
 codelyzer (comes with a new Angular project)
+redux devtools
 
-### ES6 / ES7 / Typescript
+## ES6 / ES7 / Typescript
 
 decorators @
 spread operator ...
 let and const vs. var
 () => vs. function
 
-# imports
+## imports
 
 import { Named } from './my-module'; // export class Named {}
 import { Named as Aliased } from './my-module'; // export class Named {}
@@ -67,6 +55,7 @@ import Default as Alias from './my-module'; // export default class Whatever {}
 import \* as All from './my-module'; // export default class Whatever {}
 
 ## TSC + NPM Playground:
+
 * https://github.com/demo-projects/tsc-playground
 * npm i -g typescript
 * tsc index.ts
@@ -78,17 +67,23 @@ import \* as All from './my-module'; // export default class Whatever {}
 * ngc
 
 ## Router
+
 Read about history API
+
+## Redux
+
+Slides:  
+[https://www.slideshare.net/AdamKlein7/angular-course-flux-redux](https://www.slideshare.net/AdamKlein7/angular-course-flux-redux)
+
+## Immutable libraries alternatives
+
+[lodash/fp](https://github.com/lodash/lodash/wiki/FP-Guide)
+[immutable.js](https://facebook.github.io/immutable-js/)
+[immer](https://github.com/mweststrate/immer)
 
 # Course (planned) Agenda
 
-## Reading Material
-
-* Webpack
-* NPM
-* Typescript
-
-- Day 1
+* Day 1
 
   * Intro
   * Component Concepts
@@ -99,7 +94,8 @@ Read about history API
   * module system basics
   * content projection
 
-- Day 2
+* Day 2
+
   * Demistify npm & typescript
   * ngSwitch
   * Creating a Custom Directive
@@ -110,7 +106,8 @@ Read about history API
   * Routing
   * Bonus - dynamic content creation, writing structural directives
 
-- Day 3
+* Day 3
+
   * Http
   * rxJS basics
   * lifecycle hooks
@@ -120,7 +117,7 @@ Read about history API
   * Form customization
   * Custom Validations
 
-- Day 4
+* Day 4
   * State Management using ngRX / Redux
   * Flux concepts
   * Designing the state
@@ -129,6 +126,8 @@ Read about history API
   * Selectors
   * Middlewares / Effects
 
+# Homework
+
 ### Homework - lesson #1
 
 1. Make the event fire only when going out of the field, or when pressing enter
@@ -136,27 +135,41 @@ Read about history API
 3. Make it so that not every character invokes changing the property, but after there's a 300ms of "silence"
 
 ### Homework - lesson #2
+
 1.
 Write a directive called 'scrollDetect' that adds the class 'scrolled' to an element if the window is scrolled down more than 10px, and removes it if the window is scrolled less than 50px.
 1.1 allow the user to specify the scroll threshold (50px as default)
 1.2. allow the user to also specify the name of the class (scrolled) is default
+
 * This exercise requires research. Open HINTS.md file if you need help.
 
 2. Write a pipe called 'timeAgo' that takes a date object and outputs a string in the format 'X hours ago', 'X minutes ago' (if it's less than an hour), 'X seconds ago' (if it's less than a minute).
-2.1 Make it update automatically as time goes by
+   2.1 Make it update automatically as time goes by
 
 ### Homework - lesson #3
+
 1. Implement update when we are in /editor/:id
 2. Implement custom validator
 3. Add a project selector to the application header:
+
 * Fetch all projects from the server
 * Display select box, the options are project IDs
 * When selecting a projectId - navigate to that project (editor/:id)
 
-## Check
-public interface for decorators
-what else can be transferred to HostListener
+# What's next
 
-## TODO
+## Read more about
+
+* Webpack
+* NPM
+* Typescript
+* RxJS
+
+Useful links:
+[https://docs.google.com/document/d/1kWWIf1JuPxMRJAKdic_5KgtZLsv25_VCtNu24wDqxq0/edit#](https://docs.google.com/document/d/1kWWIf1JuPxMRJAKdic_5KgtZLsv25_VCtNu24wDqxq0/edit#)
+
+# TODO (for me)
+
+check what else can be transferred to HostListener
 next assignment - use ngZone to make the scroll detect more performant
-put styles in external CSS
+Next course - put styles in external CSS so it saves time
