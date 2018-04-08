@@ -24,10 +24,10 @@ const state = {
   }
 };
 deepFreeze(state);
-console.log('state=', state);
+// console.log('state=', state);
 const state2 = set(['editor', 'elements', 1, 'text'], 'new element2', state);
 deepFreeze(state2);
-console.log('state2=', state2);
+// console.log('state2=', state2);
 
 const concat = item => arr => [...arr, item];
 
@@ -37,14 +37,14 @@ const state3 = update(
   state2
 );
 deepFreeze(state3);
-console.log('state3=', state3);
+// console.log('state3=', state3);
 
 const invert = num => 1 - num;
 
 // invert opacity of first element
 const state4 = update(['editor', 'elements', 1, 'opacity'], invert, state3);
 deepFreeze(state4);
-console.log('state4=', state4);
+// console.log('state4=', state4);
 
 // UGLY ES6 CODE:
 // const state2 = {

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './shared/shared.module';
@@ -15,8 +15,18 @@ import { AuthModule } from './auth/auth.module';
 import { EditorActionsComponent } from './editor-actions/editor-actions.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import './store';
+
 @NgModule({
-  declarations: [AppComponent, PropertiesPanelComponent, WorkingAreaComponent, ElementsNavigatorComponent, EditorComponent, EditorActionsComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    PropertiesPanelComponent,
+    WorkingAreaComponent,
+    ElementsNavigatorComponent,
+    EditorComponent,
+    EditorActionsComponent,
+    PageNotFoundComponent
+  ],
   imports: [
     AuthModule,
     BrowserModule,
