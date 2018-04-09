@@ -3,15 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { ElementProperties } from './types/element-properties.types';
 import { Project } from './types/element-properties.types';
 
+// Not in use after moving to redux
 @Injectable()
 export class EditorService {
-
   selectedElementIndex = null;
-  elements: ElementProperties[] = [
-  ];
-  constructor(private httpClient: HttpClient) {
-
-  }
+  elements: ElementProperties[] = [];
+  constructor(private httpClient: HttpClient) {}
   setSelectedIndex(i) {
     this.selectedElementIndex = i;
   }
@@ -41,9 +38,12 @@ export class EditorService {
   }
 
   update(id) {
-    return this.httpClient.put<Project>(`http://localhost:3000/projects/${id}`, {
-      elements: this.elements
-    });
+    return this.httpClient.put<Project>(
+      `http://localhost:3000/projects/${id}`,
+      {
+        elements: this.elements
+      }
+    );
   }
 
   reset() {
@@ -52,13 +52,13 @@ export class EditorService {
   }
 
   loadProject(id) {
-    return this.httpClient.get<Project>(`http://localhost:3000/projects/${id}`)
-      .subscribe((data) => {
+    return this.httpClient
+      .get<Project>(`http://localhost:3000/projects/${id}`)
+      .subscribe(data => {
         this.elements = data.elements;
       });
   }
   getAllProjects() {
     return this.httpClient.get<Project[]>('http://localhost:3000/projects');
   }
-
 }
