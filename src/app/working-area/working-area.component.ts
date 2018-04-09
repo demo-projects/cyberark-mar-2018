@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { ElementProperties } from '../types/element-properties.types';
 import { setSelectedIndex } from '../store/actions/editor.actions';
 import { NgRedux, select } from '@angular-redux/store';
+import { AppState } from '../store';
 
 @Component({
   selector: 'ca-working-area',
@@ -46,7 +47,7 @@ export class WorkingAreaComponent implements OnInit {
 
   @select(['editor', 'selectedIndex'])
   selectedElementIndex$: Observable<number>;
-  constructor(public store: NgRedux<any>) {}
+  constructor(public store: NgRedux<AppState>) {}
 
   ngOnInit() {}
 

@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
-import { EditorService } from './editor.service';
 import { PropertiesPanelComponent } from './properties-panel/properties-panel.component';
 import { WorkingAreaComponent } from './working-area/working-area.component';
 import { ElementsNavigatorComponent } from './elements-navigator/elements-navigator.component';
@@ -22,6 +21,9 @@ import {
   DevToolsExtension
 } from '@angular-redux/store';
 import { reducer } from './store';
+import { loggerMiddleware } from './store/middlewares/logger.middleware';
+import { ApiMiddleware } from './store/middlewares/api.middleware';
+import { RouterMiddleware } from './store/middlewares/router.middleware';
 
 @NgModule({
   declarations: [
@@ -41,11 +43,22 @@ import { reducer } from './store';
     SharedModule,
     NgReduxModule
   ],
-  providers: [EditorService],
+  providers: [ApiMiddleware, RouterMiddleware],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngRedux: NgRedux<any>, devTools: DevToolsExtension) {
-    ngRedux.configureStore(reducer, undefined, [], [devTools.enhancer()]);
+  constructor(
+    ngRedux: NgRedux<any>,
+    devTools: DevToolsExtension,
+    api: ApiMiddleware,
+    router: RouterMiddleware
+  ) {
+    const enhancers = devTools.isEnabled() ? [devTools.enhancer()] : [];
+    ngRedux.configureStore(
+      reducer,
+      undefined,
+      [loggerMiddleware, api.middleware, router.middleware],
+      enhancers
+    );
   }
 }

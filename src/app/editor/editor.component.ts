@@ -3,9 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { ElementProperties } from '../types/element-properties.types';
-import { EditorService } from '../editor.service';
 import { NgRedux, select } from '@angular-redux/store';
-import { updateProperties, reset } from '../store/actions/editor.actions';
+import {
+  updateProperties,
+  reset,
+  loadProject
+} from '../store/actions/editor.actions';
 import { AppState } from '../store';
 
 @Component({
@@ -31,7 +34,6 @@ export class EditorComponent implements OnInit, OnDestroy {
   selectedElement$: Observable<ElementProperties>;
 
   constructor(
-    public editor: EditorService,
     private activatedRoute: ActivatedRoute,
     public store: NgRedux<any>
   ) {}
@@ -39,7 +41,7 @@ export class EditorComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.activatedRoute.params.subscribe(params => {
       if (params.id) {
-        this.editor.loadProject(params.id);
+        this.store.dispatch(loadProject(params.id));
       } else {
         this.store.dispatch(reset());
       }

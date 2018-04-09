@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { EditorService } from './editor.service';
+import { NgRedux, select } from '@angular-redux/store';
+import { fetchProjects } from './store/actions/editor.actions';
+import { AppState } from './store';
 
 @Component({
   selector: 'ca-root',
@@ -41,11 +43,13 @@ import { EditorService } from './editor.service';
   ]
 })
 export class AppComponent implements OnInit {
+  @select(['editor', 'projectIds'])
   projectIds$: Observable<number[]>;
-  constructor(public editor: EditorService, private router: Router) {}
+
+  constructor(public store: NgRedux<AppState>, private router: Router) {}
 
   ngOnInit() {
-    this.projectIds$ = this.editor.getAllProjects().map(projects => projects.map(({ id }) => id));
+    this.store.dispatch(fetchProjects());
   }
 
   gotoProject(projectId) {

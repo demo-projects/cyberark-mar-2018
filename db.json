@@ -87,6 +87,18 @@
           "text": "March 2018",
           "color": "#456DEF",
           "opacity": 1
+        },
+        {
+          "tag": "div",
+          "text": "New Element",
+          "color": "#000000",
+          "opacity": 1
+        },
+        {
+          "tag": "div",
+          "text": "New Element",
+          "color": "#000000",
+          "opacity": 1
         }
       ],
       "id": 5
@@ -276,6 +288,69 @@
         }
       ],
       "id": 15
+    },
+    {
+      "elements": [
+        {
+          "tag": "h1",
+          "text": "Welcome",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "text": "Cyberark Course 2018",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "text": "New Element",
+          "color": "#000000",
+          "opacity": 1
+        }
+      ],
+      "id": 16
+    },
+    {
+      "elements": [
+        {
+          "tag": "h1",
+          "text": "Welcome",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "text": "Cyberark Course 2018",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "text": "New Element",
+          "color": "#000000",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "text": "New Element",
+          "color": "#000000",
+          "opacity": 1
+        }
+      ],
+      "id": 17
+    },
+    {
+      "elements": [
+        {
+          "tag": "h1",
+          "text": "Welcome",
+          "opacity": 1
+        },
+        {
+          "tag": "h2",
+          "text": "Cyberark Course 2018",
+          "opacity": 1
+        }
+      ],
+      "id": 18
     }
   ]
 }

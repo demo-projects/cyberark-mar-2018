@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EditorService } from '../editor.service';
+import { NgRedux, select } from '@angular-redux/store';
+import { AppState } from '../store';
+import { updateProject, createProject } from '../store/actions/editor.actions';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -30,19 +32,25 @@ import 'rxjs/add/operator/map';
 })
 export class EditorActionsComponent implements OnInit {
   projectId$;
-  constructor(public editor: EditorService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private store: NgRedux<AppState>
+  ) {
     this.projectId$ = this.activatedRoute.params.map(params => params.id);
   }
 
   ngOnInit() {}
 
   save() {
+    const elements = this.store.getState().editor.elements;
+
     if (this.activatedRoute.snapshot.params.id) {
-      this.editor.update(this.activatedRoute.snapshot.params.id).subscribe(console.log);
+      this.store.dispatch(
+        updateProject(this.activatedRoute.snapshot.params.id, elements)
+      );
     } else {
-      this.editor.create().subscribe(data => {
-        this.router.navigate(['/editor', data.id]);
-      });
+      this.store.dispatch(createProject(elements));
     }
   }
 }

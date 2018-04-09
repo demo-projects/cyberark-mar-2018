@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorService } from '../editor.service';
 import { TAGS } from '../types/element-properties.types';
 import { NgRedux } from '@angular-redux/store';
 import { addElement } from '../store/actions/editor.actions';
